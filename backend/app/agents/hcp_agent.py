@@ -297,7 +297,7 @@ def build_agent() -> Any:
     workflow.add_node("log_interaction", log_interaction_tool)
     workflow.add_node("edit_interaction", edit_interaction_tool)
     workflow.add_node("hcp_profile_lookup", hcp_profile_lookup_tool)
-    workflow.add_node("next_best_action", next_best_action_tool)
+    workflow.add_node("next_best_action_tool", next_best_action_tool)
     workflow.add_node("compliance_check", compliance_checker_tool)
 
     # Entry point
@@ -311,14 +311,14 @@ def build_agent() -> Any:
             "log_interaction": "log_interaction",
             "edit_interaction": "edit_interaction",
             "hcp_profile_lookup": "hcp_profile_lookup",
-            "next_best_action": "next_best_action",
+            "next_best_action": "next_best_action_tool",
             "compliance_check": "compliance_check",
         },
     )
 
     # After each tool → END (can chain NBA + Compliance in full pipeline)
     for node in ["log_interaction", "edit_interaction", "hcp_profile_lookup",
-                 "next_best_action", "compliance_check"]:
+                 "next_best_action_tool", "compliance_check"]:
         workflow.add_edge(node, END)
 
     return workflow.compile()

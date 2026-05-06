@@ -359,6 +359,3 @@ pytest
 
 ---
 
-## 📄 License
-
-MIT © 2024 – Built for interview assignment demonstration purposes.
